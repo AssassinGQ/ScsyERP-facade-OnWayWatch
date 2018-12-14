@@ -8,6 +8,7 @@ import com.alibaba.fastjson.annotation.JSONField;
 
 import javax.persistence.Entity;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,7 @@ public class Warn extends BaseEntity {
 
     public Warn() {
         super();
+        this.Pictures = new HashSet<>();
     }
 
     public Long getOutStorageForm() {
@@ -142,7 +144,10 @@ public class Warn extends BaseEntity {
     }
 
     public void setPictures(Set<Long> pictures) {
-        Pictures = pictures;
+        if(pictures == null)
+            Pictures = new HashSet<>();
+        else
+            Pictures = pictures;
     }
 
     @Override
